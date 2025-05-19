@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Catatan Keuangan</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  </head>
+  <body>
+    <h2><i class="fas fa-wallet"></i> Catatan Keuangan Harian</h2>
+
+    <div class="form-input">
+      <div>
+        <label><i class="fas fa-calendar-alt"></i></label>
+        <input type="date" id="tanggal" />
+      </div>
+
+      <div>
+        <label><i class="fas fa-pencil-alt"></i></label>
+        <input type="text" id="keterangan" placeholder="Keterangan" />
+      </div>
+
+      <div>
+        <label><i class="fas fa-arrow-down text-green"></i></label>
+        <input
+          type="number"
+          id="uangMasuk"
+          placeholder="Uang Masuk"
+          min="0"
+          oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+        />
+      </div>
+
+      <div>
+        <label><i class="fas fa-arrow-up text-red"></i></label>
+        <input
+          type="number"
+          id="uangKeluar"
+          placeholder="Uang Keluar"
+          min="0"
+          oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+        />
+      </div>
+
+      <button onclick="tambahData()">
+        <i class="fas fa-plus-circle"></i> Tambah
+      </button>
+    </div>
+
+    <div class="filter-input">
+      <div>
+        <label><i class="fas fa-calendar-day"></i></label>
+        <input type="date" id="filterAwal" oninput="renderTabel()" />
+      </div>
+      <div>
+        <label><i class="fas fa-calendar-check"></i></label>
+        <input type="date" id="filterAkhir" oninput="renderTabel()" />
+      </div>
+      <div>
+        <label><i class="fas fa-search"></i></label>
+        <input
+          type="text"
+          id="filterKeterangan"
+          placeholder="Cari keterangan..."
+          oninput="renderTabel()"
+        />
+      </div>
+    </div>
+
+    <div id="printArea">
+      <table id="tabelTransaksi">
+        <thead>
+          <tr>
+            <th><i class="fas fa-hashtag"></i> ID</th>
+            <th><i class="fas fa-calendar-alt"></i> Tanggal</th>
+            <th><i class="fas fa-align-left"></i> Keterangan</th>
+            <th><i class="fas fa-arrow-down text-green"></i> Uang Masuk</th>
+            <th><i class="fas fa-arrow-up text-red"></i> Uang Keluar</th>
+            <th><i class="fas fa-wallet"></i> Sisa Saldo</th>
+            <th><i class="fas fa-cogs"></i> Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="tabelData"></tbody>
+      </table>
+
+      <p
+        id="totalSaldo"
+        style="text-align: center; font-weight: bold; margin-top: 15px"
+      ></p>
+    </div>
+
+    <div class="export-btns">
+      <button class="reset" onclick="resetSemuaData()">
+        <i class="fas fa-trash-alt"></i> Reset Semua Data
+      </button>
+
+      <button onclick="exportExcel()">
+        <i class="fas fa-file-excel"></i> Export ke Excel
+      </button>
+
+      <button onclick="exportPDF()">
+        <i class="fas fa-file-pdf"></i> Export ke PDF
+      </button>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
