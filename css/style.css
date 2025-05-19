@@ -35,9 +35,11 @@ body {
 .text-green {
   color: green;
 }
+
 .text-red {
   color: red;
 }
+
 .form-input div,
 .filter-input div {
   display: flex;
@@ -54,7 +56,9 @@ h2 {
   font-size: 28px;
 }
 
-.form-input {
+.form-input,
+.filter-input,
+.export-btns {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -63,7 +67,8 @@ h2 {
 }
 
 input,
-button {
+button,
+select {
   padding: 12px 16px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -90,27 +95,10 @@ button:hover {
   box-shadow: 0 0 10px rgba(0, 128, 96, 0.3);
 }
 
-.filter-input {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-#filterAwal,
-#filterAkhir,
-#filterKeterangan {
-  max-width: 220px;
-  width: 100%;
-}
-
-.export-btns {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 30px;
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .reset {
@@ -122,14 +110,35 @@ button:hover {
   background-color: #e42e2e;
 }
 
-table {
+.table-wrapper {
   width: 100%;
-  border-collapse: collapse;
-  background: white;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 500px;
   border-radius: 12px;
-  overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   animation: fadeInUp 0.9s ease;
+  background: white;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #a3c9a8;
+  border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+table {
+  width: 100%;
+  min-width: 768px;
+  border-collapse: collapse;
 }
 
 th,
@@ -145,9 +154,13 @@ th {
   color: #2d6a4f;
 }
 
+tr:hover {
+  background-color: #f1f1f1;
+}
+
 td[contenteditable] {
   background-color: #f1fdf5;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 td[contenteditable]:focus {
@@ -202,12 +215,6 @@ td[contenteditable]:focus {
     font-size: 15px;
   }
 
-  table,
-  th,
-  td {
-    font-size: 14px;
-  }
-
   .toast {
     bottom: 20px;
     right: 20px;
@@ -229,7 +236,7 @@ td[contenteditable]:focus {
 
   th,
   td {
-    font-size: 12px;
+    font-size: 13px;
     padding: 10px;
   }
 
@@ -248,11 +255,12 @@ td[contenteditable]:focus {
   #totalSaldo {
     font-size: 14px;
   }
-
   table {
-    display: block;
-    overflow-x: auto;
-    width: 100%;
+    min-width: 600px;
+  }
+
+  .table-wrapper {
+    max-height: 400px;
   }
 }
 

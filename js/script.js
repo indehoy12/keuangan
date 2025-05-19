@@ -66,7 +66,6 @@ function tambahData() {
   simpanData();
   renderTabel();
 
-  // Reset input dan isi ulang tanggal dengan tanggal hari ini
   document.getElementById("tanggal").value = new Date().toISOString().split("T")[0];
   document.getElementById("keterangan").value = "";
   document.getElementById("uangMasuk").value = "";
@@ -199,7 +198,6 @@ function resetSemuaData() {
 
 renderTabel();
 
-// Otomatis isi tanggal hari ini saat halaman dimuat
 document.addEventListener("DOMContentLoaded", function () {
   const inputTanggal = document.getElementById("tanggal");
   const today = new Date().toISOString().split("T")[0];

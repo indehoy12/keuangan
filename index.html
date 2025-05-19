@@ -13,36 +13,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   </head>
   <body>
-    <h2><i class="fas fa-wallet"></i> Catatan Keuangan Harian</h2>
+    <h2><i class="fas fa-wallet"></i> Catatan Keuangan Harian F & J</h2>
 
     <div class="form-input">
       <div>
-        <label><i class="fas fa-calendar-alt"></i></label>
+        <label><i class="fas fa-calendar-alt"></i> Tanggal Input</label>
         <input type="date" id="tanggal" />
       </div>
 
       <div>
-        <label><i class="fas fa-pencil-alt"></i></label>
-        <input type="text" id="keterangan" placeholder="Keterangan" />
+        <label><i class="fas fa-pencil-alt"></i> Keterangan</label>
+        <input type="text" id="keterangan" placeholder="Contoh : Jajan" />
       </div>
 
       <div>
-        <label><i class="fas fa-arrow-down text-green"></i></label>
+        <label><i class="fas fa-arrow-down text-green"></i> Uang Masuk</label>
         <input
           type="number"
           id="uangMasuk"
-          placeholder="Uang Masuk"
+          placeholder="0"
           min="0"
           oninput="this.value = this.value.replace(/[^0-9]/g, '')"
         />
       </div>
 
       <div>
-        <label><i class="fas fa-arrow-up text-red"></i></label>
+        <label><i class="fas fa-arrow-up text-red"></i> Uang Keluar</label>
         <input
           type="number"
           id="uangKeluar"
-          placeholder="Uang Keluar"
+          placeholder="0"
           min="0"
           oninput="this.value = this.value.replace(/[^0-9]/g, '')"
         />
@@ -55,15 +55,15 @@
 
     <div class="filter-input">
       <div>
-        <label><i class="fas fa-calendar-day"></i></label>
+        <label><i class="fas fa-calendar-day"></i> Tanggal Awal</label>
         <input type="date" id="filterAwal" oninput="renderTabel()" />
       </div>
       <div>
-        <label><i class="fas fa-calendar-check"></i></label>
+        <label><i class="fas fa-calendar-check"></i> Tanggal Akhir</label>
         <input type="date" id="filterAkhir" oninput="renderTabel()" />
       </div>
       <div>
-        <label><i class="fas fa-search"></i></label>
+        <label><i class="fas fa-search"></i> Cari</label>
         <input
           type="text"
           id="filterKeterangan"
@@ -72,22 +72,23 @@
         />
       </div>
     </div>
-
     <div id="printArea">
-      <table id="tabelTransaksi">
-        <thead>
-          <tr>
-            <th><i class="fas fa-hashtag"></i> ID</th>
-            <th><i class="fas fa-calendar-alt"></i> Tanggal</th>
-            <th><i class="fas fa-align-left"></i> Keterangan</th>
-            <th><i class="fas fa-arrow-down text-green"></i> Uang Masuk</th>
-            <th><i class="fas fa-arrow-up text-red"></i> Uang Keluar</th>
-            <th><i class="fas fa-wallet"></i> Sisa Saldo</th>
-            <th><i class="fas fa-cogs"></i> Aksi</th>
-          </tr>
-        </thead>
-        <tbody id="tabelData"></tbody>
-      </table>
+      <div class="table-wrapper">
+        <table id="tabelTransaksi">
+          <thead>
+            <tr>
+              <th><i class="fas fa-hashtag"></i> ID</th>
+              <th><i class="fas fa-calendar-alt"></i> Tanggal</th>
+              <th><i class="fas fa-align-left"></i> Keterangan</th>
+              <th><i class="fas fa-arrow-down text-green"></i> Uang Masuk</th>
+              <th><i class="fas fa-arrow-up text-red"></i> Uang Keluar</th>
+              <th><i class="fas fa-wallet"></i> Sisa Saldo</th>
+              <th><i class="fas fa-cogs"></i> Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="tabelData"></tbody>
+        </table>
+      </div>
 
       <p
         id="totalSaldo"
