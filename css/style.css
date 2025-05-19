@@ -189,9 +189,17 @@ td[contenteditable]:focus {
     align-items: stretch;
   }
 
+  .form-input div,
+  .filter-input div {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   input,
-  button {
+  button,
+  select {
     width: 100%;
+    font-size: 15px;
   }
 
   table,
@@ -200,20 +208,51 @@ td[contenteditable]:focus {
     font-size: 14px;
   }
 
+  .toast {
+    bottom: 20px;
+    right: 20px;
+    width: calc(100% - 40px);
+    font-size: 14px;
+  }
+
   #totalSaldo {
     font-size: 16px;
+    padding: 10px;
   }
 }
 
 @media (max-width: 480px) {
+  h2 {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
   th,
   td {
     font-size: 12px;
     padding: 10px;
   }
 
-  h2 {
-    font-size: 22px;
+  .toast {
+    font-size: 13px;
+    padding: 10px 14px;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .action-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  #totalSaldo {
+    font-size: 14px;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
   }
 }
 
